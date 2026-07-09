@@ -36,7 +36,7 @@ Hooks.once('init', () => {
         MODULE_ID,
         'Actor.prototype._onClickDocumentLink',
         async function (wrapped, event) {
-            if (!event.shiftKey || !canToggleGinzzzuPortraits()) return wrapped(event);
+            if (!(event.ctrlKey || event.metaKey) || !canToggleGinzzzuPortraits()) return wrapped(event);
 
             const actor = await getActorFromDocumentLink(event);
             if (!actor) return wrapped(event);
