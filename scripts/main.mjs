@@ -1,4 +1,5 @@
 const MODULE_ID = 'cs-click-to-scene';
+const GINZZZU_PORTRAITS_MODULE_ID = 'ginzzzu-portraits';
 const SETTING_ID = {
     ENABLE_SCENES_LIST_JUMP: 'enableScenesListJump',
 };
@@ -27,6 +28,24 @@ Hooks.once('init', () => {
             if (!scene) return wrapped(event);
 
             return handleSceneClick(event, scene);
+        },
+        'MIXED',
+    );
+
+    libWrapper.register(
+        MODULE_ID,
+        'Actor.prototype._onClickDocumentLink',
+        async function (wrapped, event) {
+            if (!event.shiftKey || !canToggleGinzzzuPortraits()) return wrapped(event);
+
+            const actor = await getActorFromDocumentLink(event);
+            if (!actor) return wrapped(event);
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            await globalThis.GinzzzuPortraits.togglePortrait(actor);
+            globalThis.GinzzzuNPCDock?.rebuildMini?.();
         },
         'MIXED',
     );
@@ -61,6 +80,40 @@ function handleScenesListSettingChange(enabled) {
             'MIXED',
         );
     }
+}
+
+function canToggleGinzzzuPortraits() {
+    return game.user?.isGM
+        && game.modules.get(GINZZZU_PORTRAITS_MODULE_ID)?.active
+        && typeof globalThis.GinzzzuPortraits?.togglePortrait === 'function';
+}
+
+async function getActorFromDocumentLink(event) {
+    const link = getDocumentLinkElement(event);
+    const uuid = link?.dataset?.uuid;
+    const id = link?.dataset?.id;
+
+    if (uuid) {
+        const document = await fromUuid(uuid).catch(() => null);
+        const actor = getActorFromDocument(document);
+        if (actor) return actor;
+    }
+
+    return id ? game.actors.get(id) : null;
+}
+
+function getDocumentLinkElement(event) {
+    const target = event.target;
+    if (!target) return null;
+
+    return target.closest?.('[data-uuid], [data-id]') ?? target;
+}
+
+function getActorFromDocument(document) {
+    if (!document) return null;
+    if (document.documentName === 'Actor') return document;
+    if (document.constructor?.documentName === 'Actor') return document;
+    return document.actor ?? null;
 }
 
 function registerSettings(options) {
