@@ -26,7 +26,7 @@ Hooks.once('init', () => {
             const scene = game.scenes.get(id);
             if (!scene) return wrapped(event);
 
-            handleSceneClick(event, scene);
+            return handleSceneClick(event, scene);
         },
         'MIXED',
     );
@@ -34,9 +34,10 @@ Hooks.once('init', () => {
     handleScenesListSettingChange(game.settings.get(MODULE_ID, SETTING_ID.ENABLE_SCENES_LIST_JUMP));
 });
 
-function handleSceneClick(event, scene) {
+async function handleSceneClick(event, scene) {
     if (event.ctrlKey || event.metaKey) {
-        return scene.activate();
+        await game.segue.start(scene);
+        return;
     }
 
     if (event.altKey) {
@@ -55,7 +56,7 @@ function handleScenesListSettingChange(enabled) {
         libWrapper.register(MODULE_ID, cbName, (wrapped, event) => {
                 const scene = game.scenes.get(getSceneId(event));
                 if (!scene) return wrapped(event);
-                handleSceneClick(event, scene);
+                return handleSceneClick(event, scene);
             },
             'MIXED',
         );

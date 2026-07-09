@@ -2,22 +2,22 @@
   "id": "cs-click-to-scene",
   "title": "Click-to-Scene",
   "description": "<p>Enhance your scene navigation with this lightweight, system‑agnostic module:</p>\n<ul>\n  <li><strong>Click any scene link in a journal entry</strong> to instantly jump to that scene — no need for extra steps.</li>\n  <li><strong>Single‑click scenes in the sidebar’s Scenes list:</strong>\n    <ul>\n      <li><strong>Plain click</strong> — view the scene locally</li>\n      <li><strong>Ctrl/CMD‑click</strong> — activate the scene for all players</li>\n      <li><strong>Alt‑click</strong> — open the scene’s configuration sheet</li>\n    </ul>\n  </li>\n</ul>\n<p>Perfect for GMs who want a faster, cleaner way to navigate their game maps — no extra steps, no fuss!</p>",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "compatibility": {
     "minimum": "13",
     "verified": "14"
   },
-  "url": "https://github.com/cosmosaurs/click-to-scene",
-  "bugs": "https://github.com/cosmosaurs/click-to-scene/issues",
+  "url": "https://github.com/oxy949/click-to-scene",
+  "bugs": "https://github.com/oxy949/click-to-scene/issues",
   "authors": [
     {
       "name": "Cosmosaurs Studio",
-      "url": "https://patreon.com/cosmosaurs",
+      "url": "https://patreon.com/oxy949",
       "discord": "https://discord.gg/Hf9a4bgjWz"
     }
   ],
-  "download": "https://github.com/cosmosaurs/click-to-scene/archive/2.0.3.zip",
-  "manifest": "https://github.com/cosmosaurs/click-to-scene/releases/latest/download/module.json",
+  "download": "https://github.com/oxy949/click-to-scene/archive/2.0.4.zip",
+  "manifest": "https://github.com/oxy949/click-to-scene/releases/latest/download/module.json",
   "readme": "README.md",
   "esmodules": [
     "scripts/main.mjs"
