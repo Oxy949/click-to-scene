@@ -3,9 +3,11 @@
 Enhance your scene navigation with this lightweight, system‑agnostic module:
 
 - **Click any scene link in a journal entry** to instantly jump to that scene — no need for extra steps.
+- **Ctrl/CMD-click any actor link in a journal entry** to toggle that actor's portrait via [Ginzzzu's Portraits & NPC Dock](https://foundryvtt.com/packages/ginzzzu-portraits), when it is active.
 - **Single‑click scenes in the sidebar’s Scenes list:**
   - **Plain click** — view the scene locally 
-  - **Ctrl/CMD‑click** — activate the scene for all players 
+  - **Ctrl/CMD‑click** — start Foundry's scene transition
+  - **Shift‑click** — activate the scene for all players with Foundry's standard scene activation
   - **Alt‑click** — open the scene’s configuration sheet
 
 Perfect for GMs who want a faster, cleaner way to navigate their game maps — no extra steps, no fuss!

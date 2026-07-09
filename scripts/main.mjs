@@ -54,6 +54,10 @@ Hooks.once('init', () => {
 });
 
 async function handleSceneClick(event, scene) {
+    if (event.shiftKey) {
+        return scene.activate();
+    }
+
     if (event.ctrlKey || event.metaKey) {
         await game.segue.start(scene);
         return;
