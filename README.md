@@ -1,4 +1,4 @@
-# 🎯 Click-to-Scene by Cosmosaurs
+# 🎯 Click-to-Scene fork with Segue and Ginzzzu's Portraits by Oxy949
 
 Enhance your scene navigation with this lightweight, system‑agnostic module:
 
